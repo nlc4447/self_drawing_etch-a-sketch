@@ -1,7 +1,7 @@
 namespace Services;
 using Models;
 
-interface IImageConverterService
+public interface IImageConverterService
 {
     public byte[] ConvertToPng(Image image)
     {
