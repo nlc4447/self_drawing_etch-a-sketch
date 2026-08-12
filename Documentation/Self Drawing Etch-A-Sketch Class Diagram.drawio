@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="fjlWinXjVToY4T_349Jf">
+    <mxGraphModel dx="2321" dy="753" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9t-WOwgqCxYM3azkDk03-23" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="9t-WOwgqCxYM3azkDk03-4" value="&amp;nbsp;Runs&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-185" y="282.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Program.cs (Runs App)" vertex="1">
+          <mxGeometry height="90" width="170" x="-270" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="ImageConverterService&lt;div&gt;(Converts Images to single format (TBD))&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="170" x="370" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-20" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.005;entryY=0.16;entryDx=0;entryDy=0;entryPerimeter=0;" target="9t-WOwgqCxYM3azkDk03-10" value="&amp;nbsp;Delivers Normalized Image">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-25" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="9t-WOwgqCxYM3azkDk03-6" value="&amp;nbsp;Delivers Line Map">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="350" />
+              <mxPoint x="210" y="405" />
+              <mxPoint x="355" y="405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-27" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="9t-WOwgqCxYM3azkDk03-5" value="&amp;nbsp;Delivers Action Dataset&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="MainController&lt;div&gt;(Runs Main Event Loop)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="170" x="60" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-28" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="9t-WOwgqCxYM3azkDk03-14" value="Sends Actions To">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-30" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="9t-WOwgqCxYM3azkDk03-29" value="&amp;nbsp;Delivers Action Dataset">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="SketchController&lt;br&gt;(Controls rotation of etch-a-sketch dials based on provided action mapping)" vertex="1">
+          <mxGeometry height="90" width="170" x="-110" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-26" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="9t-WOwgqCxYM3azkDk03-4" value="Returns Action Dataset">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="ActionMappingService&lt;div&gt;&lt;div&gt;(Maps actions based on provided line map)&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="170" x="270" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="LineMappingService&lt;div&gt;(Converts normalized image to a line map, makes line map possible on an etch-a-sketch)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="170" x="440" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-17" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="9t-WOwgqCxYM3azkDk03-3" value="Uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="ImageController&lt;br&gt;(API which exposes an endpoint POST /image that accepts images of several formats, and normalizes to one format (formats tbd))" vertex="1">
+          <mxGeometry height="90" width="170" x="100" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-14" parent="1" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://icons.diagrams.net/assets/font-awesome/1/Paintbrush.svg" value="Etch-A-Sketch" vertex="1">
+          <mxGeometry height="81.11" width="91.25" x="-70.62" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-18" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.889;entryDx=0;entryDy=0;entryPerimeter=0;" target="9t-WOwgqCxYM3azkDk03-11" value="&amp;nbsp;Returns Normalized Format">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-19" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="9t-WOwgqCxYM3azkDk03-4" value="&amp;nbsp;Returns Normalized Image">
+          <mxGeometry relative="1" x="-0.2453" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="270" y="282.5" />
+            </Array>
+            <mxPoint x="160" y="257.21" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-21" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.998;entryY=0.84;entryDx=0;entryDy=0;entryPerimeter=0;" target="9t-WOwgqCxYM3azkDk03-4" value="&amp;nbsp;Returns LIne Map&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-24" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.296;entryY=1.009;entryDx=0;entryDy=0;entryPerimeter=0;" target="9t-WOwgqCxYM3azkDk03-11" value="&amp;nbsp;Runs&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-31" edge="1" parent="1" source="9t-WOwgqCxYM3azkDk03-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="9t-WOwgqCxYM3azkDk03-5" value="&amp;nbsp;Returns Serial Command Array&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9t-WOwgqCxYM3azkDk03-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="SerialControlConverter&lt;br&gt;(Converts Action data to Serial Command)" vertex="1">
+          <mxGeometry height="90" width="170" x="-480" y="460" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
