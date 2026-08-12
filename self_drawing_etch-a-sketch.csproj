@@ -7,4 +7,8 @@
     <RootNamespace>self_drawing_etch_a_sketch</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.0.0" />
+  </ItemGroup>
+
 </Project>

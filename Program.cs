@@ -1,9 +1,8 @@
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllers();
-
-var app = builder.Build();
-
-app.MapControllers();
-
-app.Run();
+class Program
+{
+    public static void Main(string[] args)
+    {
+        var mainController = new MainController();
+        mainController.RunApplication(args);
+    }
+}

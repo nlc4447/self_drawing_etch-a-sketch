@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("self_drawing_etch-a-sketch")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b85ff38acd4d1dd10ca97e8abdef941a4b397ee0")]
 [assembly: System.Reflection.AssemblyProductAttribute("self_drawing_etch-a-sketch")]
 [assembly: System.Reflection.AssemblyTitleAttribute("self_drawing_etch-a-sketch")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
