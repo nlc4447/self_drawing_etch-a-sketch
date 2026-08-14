@@ -1,9 +1,15 @@
 namespace Serial;
+using Models;
 
-public class SerialControlConverter
+public class SerialControlConverter : IControlConverter
 {
     public SerialControlConverter()
     {
         
+    }
+
+    public Control ConvertControl(ActionMap actionMap)
+    {
+        return new Control();
     }
 }

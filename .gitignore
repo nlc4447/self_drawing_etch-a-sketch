@@ -35,3 +35,5 @@ packages/
 # Debug / temp files
 *.tmp
 *.temp
+
+.*
