@@ -39,7 +39,7 @@ public class MainController
 
         app.MapControllers();
         
-        Log.Information($"Application launching at {app.Urls.Count}");
+        Log.Information($"Application launching at {Environment.GetEnvironmentVariable("ASPNETCORE_URLS")}");
         app.Run();
 
     }
