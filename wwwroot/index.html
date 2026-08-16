@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111827;
+            color: #f9fafb;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #1f2937;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            width: min(90vw, 420px);
+        }
+        label, button {
+            display: block;
+            width: 100%;
+        }
+        input[type="file"] {
+            margin: 1rem 0;
+            width: 100%;
+            color: #d1d5db;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+        #status {
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            color: #d1fae5;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Upload Image</h2>
+        <input id="fileInput" type="file" accept="image/png,image/jpeg,image/jpg,image/heic" />
+        <button id="uploadButton" type="button">Upload to API</button>
+        <div id="status">No file selected.</div>
+    </div>
+
+    <script>
+        const uploadButton = document.getElementById('uploadButton');
+        const fileInput = document.getElementById('fileInput');
+        const status = document.getElementById('status');
+
+        uploadButton.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+
+            if (!file) {
+                status.textContent = 'Please choose a file first.';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            status.textContent = 'Uploading...';
+
+            try {
+                const response = await fetch('/api/Image', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const text = await response.text();
+
+                if (response.ok) {
+                    status.textContent = 'Upload succeeded!\n' + text;
+                } else {
+                    status.textContent = 'Upload failed.\n' + text;
+                }
+            } catch (err) {
+                status.textContent = 'Request failed. Make sure the API is running at http://localhost:5041\n' + err.message;
+            }
+        });
+    </script>
+</body>
+</html>

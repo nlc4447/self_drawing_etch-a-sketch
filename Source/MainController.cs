@@ -13,10 +13,13 @@ public class MainController
     {
         var builder = WebApplication.CreateBuilder(commandLineArgs);
 
+        builder.WebHost.UseUrls("http://0.0.0.0:5041");
+
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddHostedService<SketchController>();
+        builder.Services.AddScoped<Services.IImageUploadService, Services.ImageUploadService>();
 
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Information()
@@ -37,6 +40,8 @@ public class MainController
             app.UseSwaggerUI();
         }
 
+        app.UseDefaultFiles();
+        app.UseStaticFiles();
         app.MapControllers();
         
         Log.Information($"Application launching at {Environment.GetEnvironmentVariable("ASPNETCORE_URLS")}");
