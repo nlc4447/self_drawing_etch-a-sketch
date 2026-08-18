@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Upload Image</title>
+    <title>The Magical Self-Drawing Etch-a-Sketch</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
             margin: 0;
         }
         .card {
-            background: #1f2937;
+            background: #424f5e;
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
@@ -26,12 +26,10 @@
             width: 100%;
         }
         input[type="file"] {
-            margin: 1rem 0;
-            width: 100%;
-            color: #d1d5db;
+            display: none;
         }
         button {
-            background: #2563eb;
+            background: #e23525;
             color: white;
             border: none;
             padding: 0.8rem 1rem;
@@ -40,27 +38,142 @@
             font-size: 1rem;
         }
         button:hover {
-            background: #1d4ed8;
+            background: #c22e20;
         }
         #status {
             margin-top: 1rem;
             white-space: pre-wrap;
             color: #d1fae5;
         }
+        .etch-a-sketch {
+            position: relative;
+            margin: 1rem auto 2.5rem;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(180deg, #dc2626, #b91c1c);
+            border-radius: 28px;
+            padding: 1.5rem 1.5rem 3.25rem;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.35), 0 6px 12px rgba(0,0,0,0.4);
+            box-sizing: border-box;
+        }
+        .etch-a-sketch.drag-over .screen {
+            box-shadow: inset 0 0 0 2px #6b7280, inset 0 4px 10px rgba(0,0,0,0.5), 0 0 0 3px #93c5fd;
+        }
+        .screen {
+            width: 100%;
+            height: 102%;
+            background: #9ca3af;
+            border-radius: 6px;
+            box-shadow: inset 0 0 0 2px #6b7280, inset 0 4px 10px rgba(0,0,0,0.5);
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .placeholder {
+            color: #4b5563;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 0 1rem;
+        }
+        #preview {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: grayscale(0.2) contrast(1.05);
+        }
+        .etch-a-sketch.has-image #preview {
+            display: block;
+        }
+        .etch-a-sketch.has-image .placeholder {
+            display: none;
+        }
+        .knob {
+            position: absolute;
+            bottom: 0.4rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: radial-gradient(circle at 35% 35%, #f3f4f6, #9ca3af);
+            border-radius: 50%;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.4);
+        }
+        .knob.left {
+            left: 1.5rem;
+        }
+        .knob.right {
+            right: 1.5rem;
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>Upload Image</h2>
+        <h2 style="text-align: center;">Self-Drawing Etch-a-Sketch!</h2>
         <input id="fileInput" type="file" accept="image/png,image/jpeg,image/jpg,image/heic" />
-        <button id="uploadButton" type="button">Upload to API</button>
-        <div id="status">No file selected.</div>
+        <div id="etchASketch" class="etch-a-sketch">
+            <div class="screen">
+                <span class="placeholder">Click or drag &amp; drop an image here</span>
+                <img id="preview" alt="Selected image preview" />
+            </div>
+            <div class="knob left"></div>
+            <div class="knob right"></div>
+        </div>
+        <button id="uploadButton" type="button">Bring Your Image to Life</button>
+        <div id="status"></div>
     </div>
 
     <script>
         const uploadButton = document.getElementById('uploadButton');
         const fileInput = document.getElementById('fileInput');
         const status = document.getElementById('status');
+        const preview = document.getElementById('preview');
+        const etchASketch = document.getElementById('etchASketch');
+        const screen = etchASketch.querySelector('.screen');
+
+        function showFile(file) {
+            if (!file) {
+                etchASketch.classList.remove('has-image');
+                preview.removeAttribute('src');
+                return;
+            }
+
+            preview.src = URL.createObjectURL(file);
+            etchASketch.classList.add('has-image');
+        }
+
+        screen.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', () => {
+            showFile(fileInput.files[0]);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            screen.addEventListener(eventName, (event) => {
+                event.preventDefault();
+                etchASketch.classList.add('drag-over');
+            });
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            screen.addEventListener(eventName, (event) => {
+                event.preventDefault();
+                etchASketch.classList.remove('drag-over');
+            });
+        });
+
+        screen.addEventListener('drop', (event) => {
+            const file = event.dataTransfer.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            fileInput.files = event.dataTransfer.files;
+            showFile(file);
+        });
 
         uploadButton.addEventListener('click', async () => {
             const file = fileInput.files[0];
@@ -89,7 +202,7 @@
                     status.textContent = 'Upload failed.\n' + text;
                 }
             } catch (err) {
-                status.textContent = 'Request failed. Make sure the API is running at http://localhost:5041\n' + err.message;
+                status.textContent = 'Request failed: ' + err.message;
             }
         });
     </script>
