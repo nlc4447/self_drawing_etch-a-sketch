@@ -18,6 +18,7 @@ public class ImageUploadService : IImageUploadService
     public string Upload(IFormFile file)
     {
         _logger.LogInformation("Starting image upload process.");
+        string fullFilePath = Path.Combine(_uploadDirectoryPath, _imageFileName);
         string fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
 
         // Validate file format
@@ -37,11 +38,12 @@ public class ImageUploadService : IImageUploadService
         {
             throw new ArgumentException("File is empty.");
         }
-
-        File.Delete(Path.Combine(_uploadDirectoryPath, _imageFileName));
-
+        // Clean up old image
+        if(File.Exists(fullFilePath)) File.Delete(fullFilePath);
+        // Ensure the upload directory exists
+        Directory.CreateDirectory(_uploadDirectoryPath); 
         // Change the name of the file to a common name
-        using (FileStream stream = new(Path.Combine(_uploadDirectoryPath, _imageFileName), FileMode.Create))
+        using (FileStream stream = new(fullFilePath, FileMode.Create))
         {
             file.CopyTo(stream);
         }
