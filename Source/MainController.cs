@@ -11,15 +11,24 @@ public class MainController
 
     public void RunApplication(string[] commandLineArgs)
     {
+        DotNetEnv.Env.Load();
         var builder = WebApplication.CreateBuilder(commandLineArgs);
-
-        builder.WebHost.UseUrls("http://0.0.0.0:5041");
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddHostedService<SketchController>();
-        builder.Services.AddScoped<Services.IImageUploadService, Services.ImageUploadService>();
+        builder.Services.AddSingleton<Services.IImageUploadService, Services.ImageUploadService>();
+        builder.Services.AddSingleton<Services.ILineMappingService, Services.LineMappingService>();
+        builder.Services.AddSingleton<Services.IActionMappingService, Services.ActionMappingService>();
+        if(Environment.GetEnvironmentVariable("CONTROL_GENERATION") == "serial")
+        {
+            builder.Services.AddSingleton<IControlConverter, SerialControlConverter>();
+        }
+        else
+        {
+            builder.Services.AddSingleton<IControlConverter, VirtualControlConverter>();
+        }
 
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Information()
@@ -47,9 +56,5 @@ public class MainController
         Log.Information($"Application launching at {Environment.GetEnvironmentVariable("ASPNETCORE_URLS")}");
         app.Run();
 
-    }
-    private void RunImageApi()
-    {
-        
     }
 }

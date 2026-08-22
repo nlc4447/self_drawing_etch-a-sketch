@@ -1,5 +1,3 @@
-using Avalonia.Controls;
-
 namespace Services;
 
 public class ImageUploadService : IImageUploadService
@@ -7,6 +5,8 @@ public class ImageUploadService : IImageUploadService
     private readonly ILogger<ImageUploadService> _logger;
     private readonly string _imageFileName = "latest.png";
     private readonly string _uploadDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), "UploadedImages");
+
+    public event EventHandler? Uploaded;
 
     public ImageUploadService(ILogger<ImageUploadService> logger)
     {
@@ -48,6 +48,9 @@ public class ImageUploadService : IImageUploadService
             file.CopyTo(stream);
         }
         _logger.LogInformation($"Image uploaded successfully as {_imageFileName}.");
+
+        Uploaded?.Invoke(this, EventArgs.Empty);
+
         return _imageFileName;
     }
 }

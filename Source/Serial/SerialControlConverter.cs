@@ -12,4 +12,9 @@ public class SerialControlConverter : IControlConverter
     {
         return new Control();
     }
+    
+    public void DrawCircle()
+    {
+        // Implementation for drawing a circle using serial communication
+    }
 }
