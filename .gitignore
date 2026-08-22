@@ -37,3 +37,6 @@ packages/
 *.temp
 
 .*
+
+# Images
+*.png
