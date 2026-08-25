@@ -22,7 +22,6 @@ public class ImageController : ControllerBase
     [HttpPost]
     public IActionResult UploadImage(IFormFile file)
     {
-        //TODO: represent as webpage so user can upload image from browser
         _logger.LogInformation($"Received image upload request for file: {file.FileName}, size: {file.Length / 1024} KB.");
         try
         {
