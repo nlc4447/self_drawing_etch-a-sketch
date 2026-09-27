@@ -12,6 +12,8 @@
   <ItemGroup>
     <PackageReference Include="DotNetEnv" Version="3.1.1" />
     <PackageReference Include="Eto.Forms" Version="2.11.0" />
+    <PackageReference Include="OpenCvSharp5" Version="5.0.0.20260905" />
+    <PackageReference Include="OpenCvSharp5.Windows" Version="5.0.0.20260905" />
     <PackageReference Include="Serilog" Version="4.4.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />

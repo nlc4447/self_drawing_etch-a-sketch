@@ -38,10 +38,10 @@ public class ImageUploadService : IImageUploadService
         {
             throw new ArgumentException("File is empty.");
         }
-        // Clean up old image
-        if(File.Exists(fullFilePath)) File.Delete(fullFilePath);
+        // Clean up old image(s)
+        if(Directory.Exists(_uploadDirectoryPath)) Directory.Delete(_uploadDirectoryPath, true);
         // Ensure the upload directory exists
-        Directory.CreateDirectory(_uploadDirectoryPath); 
+        Directory.CreateDirectory(_uploadDirectoryPath);
         // Change the name of the file to a common name
         using (FileStream stream = new(fullFilePath, FileMode.Create))
         {

@@ -22,7 +22,8 @@ public class SketchController : BackgroundService
 
     private void OnActionMapReady(object? sender, ActionMap actionMap)
     {
-        _controlConverter.DrawCircle();
+        // _controlConverter.DrawCircle();
+        _controlConverter.DetectImageLines();
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)

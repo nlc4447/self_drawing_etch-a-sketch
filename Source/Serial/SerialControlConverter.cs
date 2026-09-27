@@ -17,4 +17,9 @@ public class SerialControlConverter : IControlConverter
     {
         // Implementation for drawing a circle using serial communication
     }
+
+    public void DetectImageLines()
+    {
+        // Implementation for detecting image lines using serial communication
+    }
 }

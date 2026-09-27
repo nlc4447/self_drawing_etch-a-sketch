@@ -1,5 +1,6 @@
 using Models;
 using Eto.Drawing;
+using OpenCvSharp;
 namespace Serial;
 
 /// <summary>
@@ -16,6 +17,30 @@ public class VirtualControlConverter : IControlConverter
     public Control ConvertControl(ActionMap actionMap)
     {
         return new Control();
+    }
+
+    public void DetectImageLines()
+    {
+
+        Mat image = Cv2.ImRead("UploadedImages/latest.png");
+        Mat dstImage = new();
+        Cv2.Resize(image, dstImage, new OpenCvSharp.Size(800, 600));
+
+        Mat gray = new();
+
+        Cv2.CvtColor(dstImage, gray, ColorConversionCodes.RGB2GRAY);
+
+        var lsd = LineSegmentDetector.Create();
+
+        Vec4f[] lines;
+        double[] widths;
+        double[] precisions;
+        double[] nfas;
+        
+        lsd.Detect(gray, out lines, out widths, out precisions, out nfas);
+        DrawLines(lines);
+
+        Cv2.WaitKey();
     }
 
     public void DrawCircle()
@@ -50,7 +75,7 @@ public class VirtualControlConverter : IControlConverter
 
     private void SaveCircleImage(SketchWindow window)
     {
-        string outputDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), "UploadedImages");
+        string outputDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), "VirtualSketches");
         Directory.CreateDirectory(outputDirectoryPath);
         string outputFilePath = Path.Combine(outputDirectoryPath, "sketch-output.png");
 
@@ -59,5 +84,42 @@ public class VirtualControlConverter : IControlConverter
             using var bitmap = window.CaptureBitmap();
             bitmap.Save(outputFilePath, ImageFormat.Png);
         });
+    }
+
+    private Vec4f[] ConnectLines(Vec4f[] lines)
+    {
+        Vec4f[] connectedLines = lines;
+
+        foreach (var line in lines)
+        {
+            
+        }
+
+        return connectedLines;
+    }
+    private void DrawLines(Vec4f[] lines)
+    {
+        Mat blankImage = Cv2.ImRead("VirtualSketches/black_800x600.png");
+        OpenCvSharp.Point p1 = new OpenCvSharp.Point();
+        OpenCvSharp.Point p2 = new OpenCvSharp.Point();
+
+        foreach (var line in lines)
+        {
+            p1.X = (int)line.Item0;
+            p1.Y = (int)line.Item1;
+            p2.X = (int)line.Item2;
+            p2.Y = (int)line.Item3;
+
+            if (Math.Abs(p1.X - p2.X) < 10 && Math.Abs(p1.Y - p2.Y) < 10) continue;
+
+            Cv2.Line(
+                blankImage,
+                p1,
+                p2,
+                Scalar.White,
+                2,
+                LineTypes.AntiAlias);
+        }
+        Cv2.ImShow("Detected Lines", blankImage);
     }
 }

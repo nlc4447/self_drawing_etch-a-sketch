@@ -6,4 +6,5 @@ public interface IControlConverter
 {
     public Control ConvertControl(ActionMap actionMap);
     public void DrawCircle();
+    public void DetectImageLines();
 }
